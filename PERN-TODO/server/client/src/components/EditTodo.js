@@ -4,7 +4,7 @@ const EditTodo = ({todoItems}) => {
 
     const [description, setDescription] = useState(todoItems.description);
 
-    console.log(todoItems);
+    // console.log(todoItems);
 
     //edit decription function
 

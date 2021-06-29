@@ -6,12 +6,15 @@ const ListTodos = () => {
 
     const [todos, setTodos] = useState([]);
 
+    console.log(todos);
+
     //delete todo function
     const deleteTodo = async id => {
         try {
             const deleteTodo = await fetch(`http://localhost:5000/todos/${id}`, {
                 method: "DELETE"
             });
+            console.log(id);
             setTodos(todos.filter(todoItems => todoItems.id !== id));
         } catch (err) {
             console.log(err);
@@ -31,6 +34,10 @@ const ListTodos = () => {
             console.error(err.message);
         }
     };
+
+    // function getSubject(id) {
+    //     const subject = pool.query("SELECT ID FROM todoItems INNER JOIN todoLists ON todoItems.List_Id = todoLists.Id");
+    // }
     
     useEffect(() => {
         getTodos();
@@ -40,10 +47,13 @@ const ListTodos = () => {
     return (
     <Fragment>
       {" "}
+      <h1 className="text-center mt-5">Todo Items</h1>
       <table class="table table-striped mt-5 text-center">
         <thead>
         <tr>
             <th>Description</th>
+            <th>Status</th>
+            <th>Subject</th>
             <th>Edit</th>
             <th>Delete</th>
         </tr>
@@ -57,6 +67,8 @@ const ListTodos = () => {
         {todos.map(todoItems => (
             <tr key={todoItems.id}>
                 <td>{todoItems.description}</td>
+                <td>{todoItems.status}</td>
+                <td>{todoItems.tittle}</td>
                 <td>
                     <EditTodo todoItems={todoItems}/>
                 </td>

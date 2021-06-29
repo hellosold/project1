@@ -5,12 +5,15 @@ import './App.css';
 
 import InputTodo from './components/InputTodo';
 import ListTodos from './components/ListTodos';
+import InputLists from './components/InputList';
+import ListLists from './components/ListLists';
 
 function App() {
   return (
     <Fragment>
       <div className="container">
-        <InputTodo />
+        <InputLists />
+        <ListLists />
         <ListTodos />
       </div> 
     </Fragment>
